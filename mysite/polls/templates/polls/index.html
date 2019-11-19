@@ -12,5 +12,10 @@
     <p> You don't have any questions. Please add some</p>
 {% endif %}
 
+<div class= "button-group">
+     <a href={% url "polls:register_company" %} class="btn btn-primary btn-md" role="button"> Register a Company</a>
+     <a href={% url "polls:display_company" %} class="btn btn-primary btn-md" role="button"> Display all Companies</a>
+
+</div>
 {% endblock %}
 
