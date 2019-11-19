@@ -1,7 +1,11 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import Question
+from .models import Company
+from .forms import *
+from django.template import RequestContext
+
 
 # Create your views here.
 
@@ -28,3 +32,24 @@ def vote(request, question_id):
         selected_choice.votes += 1
         selected_choice.save()
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def display_company(request):
+    company = Company.objects.all()
+    context = {
+        'company': company,
+    }
+    return render(request, 'polls/display_company.html', context)
+
+def register_company(request):
+    if request.method == 'POST':
+        form = CompanyForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            #return render(request, 'polls/index.html', {'form': form})
+            return redirect('index')
+
+
+    else:
+            form = CompanyForm()
+            return render(request, 'polls/register_company.html', {'form': form})
