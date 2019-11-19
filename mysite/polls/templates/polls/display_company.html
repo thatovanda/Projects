@@ -4,6 +4,7 @@
 <table class="table table-hover">
     <thead>
      <tr>
+         <th>Id</th>
          <th>Name</th>
          <th>Address</th>
          <th>Telephone</th>
@@ -12,16 +13,18 @@
          <th>Vat Number</th>
      </tr>
     </thead>
-
     <tbody>
-    {% for item in company %}
-    <tr>{{ item.pk }}</tr>
-    <tr>{{ item.name }}</tr>
-    <tr>{{ item.address }}</tr>
-    <tr>{{ item.telephone }}</tr>
-    <tr>{{ item.email }}</tr>
-    <tr>{{ item.fax }}</tr>
-    <tr>{{ item.vat_number }}</tr>
+
+      {% for item in company %}
+      <tr>
+        <td>{{ item.pk }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.address }}</td>
+        <td>{{ item.telephone }}</td>
+        <td>{{ item.email }}</td>
+        <td>{{ item.fax }}</td>
+        <td>{{ item.vat_number }}</td>
+      </tr>
     {% endfor %}
     </tbody>
 </table>
