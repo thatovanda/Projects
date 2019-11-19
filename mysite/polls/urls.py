@@ -1,16 +1,19 @@
 from django.conf.urls import url
-from . import views
+from .views import *
 
 urlpatterns = [
 
-    url(r'^$', views.index, name="index"),
+    url(r'^$', index, name="index"),
     #127.0.0.1/polls/
-    url(r'^(?P<question_id>[0-9]+)/$', views.detail, name="detail"),
+    url(r'^(?P<question_id>[0-9]+)/$', detail, name="detail"),
     #127.0.0.1/polls/1
-    url(r'^(?P<question_id>[0-9]+)/results$', views.results, name="results"),
+    url(r'^(?P<question_id>[0-9]+)/results$', results, name="results"),
     #127.0.0.1/polls/1/results
-    url(r'^(?P<question_id>[0-9]+)/vote$', views.vote, name="vote")
+    url(r'^(?P<question_id>[0-9]+)/vote$', vote, name="vote"),
     #127.0.0.1/polls/1/vote
+
+    url(r'^display_company$', display_company, name="display_company"),
+    url(r'^register_company$', register_company, name="register_company"),
 ]
 
 app_name="polls"
