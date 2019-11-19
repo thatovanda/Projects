@@ -14,6 +14,7 @@ urlpatterns = [
 
     url(r'^display_company$', display_company, name="display_company"),
     url(r'^register_company$', register_company, name="register_company"),
+    url(r'^edit_company$', edit_company, name="edit_company"),
 ]
 
 app_name="polls"
