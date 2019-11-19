@@ -17,3 +17,13 @@ class Choice(models.Model):
     def __str__(self):
         return self.choice_text
 
+class Company(models.Model):
+    name = models.CharField(max_length= 100)
+    address= models.CharField(max_length= 200)
+    telephone = models.IntegerField()
+    email = models.CharField(max_length= 50)
+    fax = models.IntegerField()
+    vat_number = models.IntegerField()
+
+    def __str__(self):
+        return self.name
