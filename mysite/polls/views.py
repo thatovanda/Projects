@@ -49,7 +49,18 @@ def register_company(request):
             #return render(request, 'polls/index.html', {'form': form})
             return redirect('index')
 
-
     else:
             form = CompanyForm()
             return render(request, 'polls/register_company.html', {'form': form})
+
+def edit_company(request, pk):
+    item = get_object_or_404(Company, pk=pk)
+
+    if request.method == "POST":
+        form = CompanyForm(request.POST, instance=item)
+        if form.is_valid():
+            form.save()
+            return redirect('index')
+    else:
+        form = CompanyForm(instance=item)
+        return render(request, 'edit_company.html', {'form': form})
