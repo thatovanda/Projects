@@ -1,0 +1,30 @@
+{% extends 'polls/base.html' %}
+{% block main_content %}
+
+<table class="table table-hover">
+    <thead>
+     <tr>
+         <th>Name</th>
+         <th>Address</th>
+         <th>Telephone</th>
+         <th>Email</th>
+         <th>Fax</th>
+         <th>Vat Number</th>
+     </tr>
+    </thead>
+
+    <tbody>
+    {% for item in company %}
+    <tr>{{ item.pk }}</tr>
+    <tr>{{ item.name }}</tr>
+    <tr>{{ item.address }}</tr>
+    <tr>{{ item.telephone }}</tr>
+    <tr>{{ item.email }}</tr>
+    <tr>{{ item.fax }}</tr>
+    <tr>{{ item.vat_number }}</tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}
+
