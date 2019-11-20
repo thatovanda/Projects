@@ -4,7 +4,7 @@ from django.urls import reverse
 from .models import Question
 from .models import Company
 from .forms import *
-from django.template import RequestContext
+from django.core.paginator import Paginator
 
 
 # Create your views here.
@@ -35,9 +35,14 @@ def vote(request, question_id):
 
 def display_company(request):
     company = Company.objects.all()
+    paginator = Paginator(company, 3)
+    page = request.GET.get('page')
+    company = paginator.get_page(page)
     context = {
         'company': company,
     }
+
+
     return render(request, 'polls/display_company.html', context)
 
 def register_company(request):
@@ -66,7 +71,7 @@ def edit_company(request, pk):
         return render(request, 'polls/edit_company.html', {'form': form})
 
 def delete_company(request, pk):
-    Company.objects.filter(id=pk).delet()
+    Company.objects.filter(id=pk).delete()
     company = Company.objects.all()
     context = {
         'company': company,
