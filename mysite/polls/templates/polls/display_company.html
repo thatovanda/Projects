@@ -24,6 +24,9 @@
         <td>{{ item.email }}</td>
         <td>{{ item.fax }}</td>
         <td>{{ item.vat_number }}</td>
+          <td>
+              <a href={% url "polls:edit_company" item.pk %} class="btn btn-warning btn-sm" role="button">Edit</a>
+          </td>
       </tr>
     {% endfor %}
     </tbody>
