@@ -26,6 +26,7 @@
         <td>{{ item.vat_number }}</td>
           <td>
               <a href={% url "polls:edit_company" item.pk %} class="btn btn-warning btn-sm" role="button">Edit</a>
+              <a href={% url "polls:delete_company" item.pk %} class="btn btn-warning btn-sm" role="button">Delete</a>
           </td>
       </tr>
     {% endfor %}
