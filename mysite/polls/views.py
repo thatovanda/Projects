@@ -47,7 +47,7 @@ def register_company(request):
         if form.is_valid():
             form.save()
             #return render(request, 'polls/index.html', {'form': form})
-            return redirect('index')
+            return redirect('polls:index')
 
     else:
             form = CompanyForm()
@@ -60,7 +60,15 @@ def edit_company(request, pk):
         form = CompanyForm(request.POST, instance=item)
         if form.is_valid():
             form.save()
-            return redirect('index')
+            return redirect('polls:index')
     else:
         form = CompanyForm(instance=item)
-        return render(request, 'edit_company.html', {'form': form})
+        return render(request, 'polls/edit_company.html', {'form': form})
+
+def delete_company(request, pk):
+    Company.objects.filter(id=pk).delet()
+    company = Company.objects.all()
+    context = {
+        'company': company,
+    }
+    return render(request, 'polls/display_company.html', context)
