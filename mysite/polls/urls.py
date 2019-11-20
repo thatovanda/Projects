@@ -3,7 +3,7 @@ from .views import *
 
 urlpatterns = [
 
-    url(r'^$', index, name="index"),
+    url(r'^/$', index, name='index'),
     #127.0.0.1/polls/
     url(r'^(?P<question_id>[0-9]+)/$', detail, name="detail"),
     #127.0.0.1/polls/1
@@ -14,7 +14,8 @@ urlpatterns = [
 
     url(r'^display_company$', display_company, name="display_company"),
     url(r'^register_company$', register_company, name="register_company"),
-    url(r'^edit_company$', edit_company, name="edit_company"),
+    url(r'^edit_company/(?P<pk>\d+)/$', edit_company, name="edit_company"),
+    url(r'^delete_company/(?P<pk>\d+)/$', delete_company, name="delete_company"),
 ]
 
 app_name="polls"
